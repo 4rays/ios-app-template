@@ -9,6 +9,7 @@ let project = Project(
       destinations: [.iPad, .iPhone, .macCatalyst],
       product: .framework,
       bundleId: "net.4rays.ModuleTemplate",
+      deploymentTargets: .iOS("18.0"),
       sources: ["Sources/**"],
       dependencies: [
         .external(name: "ComposableArchitecture"),
