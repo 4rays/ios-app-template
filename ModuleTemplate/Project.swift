@@ -2,7 +2,13 @@ import ProjectDescription
 
 let project = Project(
   name: "ModuleTemplate",
-  settings: .settings(),
+    settings: .settings(
+    base: [
+      "ENABLE_USER_SCRIPT_SANDBOXING": "YES",
+      "ENABLE_MODULE_VERIFIER": "YES",
+      "MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS": "gnu11 gnu++14",
+    ]
+  ),
   targets: [
     .target(
       name: "ModuleTemplate",
