@@ -35,6 +35,14 @@ This will generate the Xcode project and workspace from the Tuist project models
 
 You can now open `AppTemplate.xcworkspace` in Xcode and build/run the project.
 
+#### Update Tuist Version
+
+If you need to update the Tuist version, you can run:
+
+```sh
+mise up --bump
+```
+
 ### Project Settings
 
 - `OTHER_LDFLAGS` is set to `-ObjC` to allow Objective-C dependencies.
