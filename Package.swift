@@ -14,7 +14,7 @@
 #endif
 
 let package = Package(
-  name: "AppTemplate",
+  name: "App",
   dependencies: [
     .package(url: "https://github.com/4rays/jwt-auth-client", from: "1.1.3"),
     .package(url: "https://github.com/4rays/logging-client", from: "1.0.0"),

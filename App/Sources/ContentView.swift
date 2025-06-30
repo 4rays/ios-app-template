@@ -1,15 +1,15 @@
 import SwiftUI
-import ModuleTemplate
+import Core
 
 public struct ContentView: View {
   public init() {}
 
   public var body: some View {
     VStack {
-      Text(ModuleTemplate().hello())
+      Text(Core().hello())
         .padding()
 
-      Text("\(ModuleTemplate().random())")
+      Text("\(Core().random())")
         .padding()
     }
   }

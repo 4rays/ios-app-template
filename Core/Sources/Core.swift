@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ModuleTemplate {
+public struct Core {
   public init() {}
 
   public func hello() -> String {

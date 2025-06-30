@@ -69,3 +69,4 @@ Derived/
 ### SPM ###
 .build/
 .index-build/
+.claude/settings.local.json

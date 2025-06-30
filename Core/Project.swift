@@ -1,7 +1,7 @@
 import ProjectDescription
 
 let project = Project(
-  name: "ModuleTemplate",
+  name: "Core",
     settings: .settings(
     base: [
       "ENABLE_USER_SCRIPT_SANDBOXING": "YES",
@@ -11,11 +11,11 @@ let project = Project(
   ),
   targets: [
     .target(
-      name: "ModuleTemplate",
-      destinations: [.iPad, .iPhone, .macCatalyst],
+      name: "Core",
+      destinations: [.iPad, .iPhone, .mac],
       product: .framework,
-      bundleId: "net.4rays.ModuleTemplate",
-      deploymentTargets: .iOS("18.0"),
+      bundleId: "net.4rays.Core",
+      deploymentTargets: .multiplatform(iOS: "18.0", macOS: "15.0"),
       sources: ["Sources/**"],
       dependencies: [
         .external(name: "ComposableArchitecture"),
