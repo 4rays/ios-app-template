@@ -30,7 +30,6 @@ extension Project {
           product: .unitTests,
           bundleId: "net.4rays.\(name)Tests",
           sources: ["Tests/**"]
-          // dependencies: [.target(name: name)]
         ),
       ]
     )
