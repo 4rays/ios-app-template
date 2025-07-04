@@ -14,11 +14,11 @@ let project = Project(
   ),
   targets: [
     .target(
-      name: "App-iOS",
-      destinations: .iOS,
+      name: "App",
+      destinations: [.iPad, .iPhone, .mac],
       product: .app,
       bundleId: "net.4rays.App",
-      deploymentTargets: .iOS("18.0"),
+      deploymentTargets: .multiplatform(iOS: "18.0", macOS: "15.0"),
       infoPlist: .extendingDefault(
         with: [
           "UILaunchScreen": [
@@ -31,33 +31,14 @@ let project = Project(
       resources: ["Resources/**"],
       dependencies: [
         .project(target: "Core", path: .relativeToRoot("Core")),
-        .project(target: "Components", path: .relativeToRoot("Components"))
+        .project(target: "Components", path: .relativeToRoot("Components")),
       ],
       settings: .settings(
         base: [
           "OTHER_LDFLAGS": .string("-ObjC"),
-          "CODE_SIGN_ENTITLEMENTS": .string("App.entitlements"),
-          "INFOPLIST_KEY_CFBundleDisplayName": "$(DISPLAY_NAME)",
-        ]
-      )
-    ),
-    .target(
-      name: "App-Mac",
-      destinations: .macOS,
-      product: .app,
-      bundleId: "net.4rays.App",
-      deploymentTargets: .macOS("15.0"),
-      infoPlist: .extendingDefault(with: [:]),
-      sources: ["Sources/**"],
-      resources: ["Resources/**"],
-      dependencies: [
-        .project(target: "Core", path: .relativeToRoot("Core")),
-        .project(target: "Components", path: .relativeToRoot("Components"))
-      ],
-      settings: .settings(
-        base: [
-          "OTHER_LDFLAGS": .string("-ObjC"),
-          "CODE_SIGN_ENTITLEMENTS": .string("AppMac.entitlements"),
+          "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": .string("AppMac.entitlements"),
+          "CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]": .string("App.entitlements"),
+          "CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]": .string("App.entitlements"),
           "INFOPLIST_KEY_CFBundleDisplayName": "$(DISPLAY_NAME)",
         ]
       )
@@ -65,62 +46,32 @@ let project = Project(
   ],
   schemes: [
     .scheme(
-      name: "App iOS Debug",
+      name: "App Debug",
       shared: true,
-      buildAction: .buildAction(targets: ["App-iOS"]),
+      buildAction: .buildAction(targets: ["App"]),
       runAction: .runAction(
         configuration: "Debug",
-        executable: "App-iOS"
+        executable: "App"
       ),
       archiveAction: .archiveAction(configuration: "Debug"),
       profileAction: .profileAction(
         configuration: "Debug",
-        executable: "App-iOS"
+        executable: "App"
       ),
       analyzeAction: .analyzeAction(configuration: "Debug")
     ),
     .scheme(
-      name: "App iOS",
+      name: "App Release",
       shared: true,
-      buildAction: .buildAction(targets: ["App-iOS"]),
+      buildAction: .buildAction(targets: ["App"]),
       runAction: .runAction(
         configuration: "Release",
-        executable: "App-iOS"
+        executable: "App"
       ),
       archiveAction: .archiveAction(configuration: "Release"),
       profileAction: .profileAction(
         configuration: "Release",
-        executable: "App-iOS"
-      ),
-      analyzeAction: .analyzeAction(configuration: "Release")
-    ),
-    .scheme(
-      name: "App macOS Debug",
-      shared: true,
-      buildAction: .buildAction(targets: ["App-Mac"]),
-      runAction: .runAction(
-        configuration: "Debug",
-        executable: "App-Mac"
-      ),
-      archiveAction: .archiveAction(configuration: "Debug"),
-      profileAction: .profileAction(
-        configuration: "Debug",
-        executable: "App-Mac"
-      ),
-      analyzeAction: .analyzeAction(configuration: "Debug")
-    ),
-    .scheme(
-      name: "App macOS",
-      shared: true,
-      buildAction: .buildAction(targets: ["App-Mac"]),
-      runAction: .runAction(
-        configuration: "Release",
-        executable: "App-Mac"
-      ),
-      archiveAction: .archiveAction(configuration: "Release"),
-      profileAction: .profileAction(
-        configuration: "Release",
-        executable: "App-Mac"
+        executable: "App"
       ),
       analyzeAction: .analyzeAction(configuration: "Release")
     ),
