@@ -14,10 +14,10 @@ let project = Project(
   ),
   targets: [
     .target(
-      name: "App",
+      name: "Indigo",
       destinations: [.iPad, .iPhone, .mac],
       product: .app,
-      bundleId: "net.4rays.App",
+      bundleId: "net.4rays.Indigo",
       deploymentTargets: .multiplatform(iOS: "18.0", macOS: "15.0"),
       infoPlist: .extendingDefault(
         with: [
@@ -36,9 +36,9 @@ let project = Project(
       settings: .settings(
         base: [
           "OTHER_LDFLAGS": .string("-ObjC"),
-          "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": .string("AppMac.entitlements"),
-          "CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]": .string("App.entitlements"),
-          "CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]": .string("App.entitlements"),
+          "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": .string("mac.entitlements"),
+          "CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]": .string("ios.entitlements"),
+          "CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]": .string("ios.entitlements"),
           "INFOPLIST_KEY_CFBundleDisplayName": "$(DISPLAY_NAME)",
         ]
       )
@@ -46,32 +46,32 @@ let project = Project(
   ],
   schemes: [
     .scheme(
-      name: "App Debug",
+      name: "Indigo Debug",
       shared: true,
-      buildAction: .buildAction(targets: ["App"]),
+      buildAction: .buildAction(targets: ["Indigo"]),
       runAction: .runAction(
         configuration: "Debug",
-        executable: "App"
+        executable: "Indigo"
       ),
       archiveAction: .archiveAction(configuration: "Debug"),
       profileAction: .profileAction(
         configuration: "Debug",
-        executable: "App"
+        executable: "Indigo"
       ),
       analyzeAction: .analyzeAction(configuration: "Debug")
     ),
     .scheme(
-      name: "App Release",
+      name: "Indigo Release",
       shared: true,
-      buildAction: .buildAction(targets: ["App"]),
+      buildAction: .buildAction(targets: ["Indigo"]),
       runAction: .runAction(
         configuration: "Release",
-        executable: "App"
+        executable: "Indigo"
       ),
       archiveAction: .archiveAction(configuration: "Release"),
       profileAction: .profileAction(
         configuration: "Release",
-        executable: "App"
+        executable: "Indigo"
       ),
       analyzeAction: .analyzeAction(configuration: "Release")
     ),

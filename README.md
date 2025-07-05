@@ -1,8 +1,9 @@
-# iOS App Template
+# Indigo Stack 🔵🟣 Apple Platforms
 
 ## Getting Started
 
-This project uses [Tuist](https://tuist.dev/) to manage the project.
+The Indigo stack uses [Tuist](https://tuist.dev/) for organizing and managing
+the project structure, dependencies, and build settings for Apple platform applications.
 
 ### Setup
 
