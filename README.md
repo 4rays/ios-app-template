@@ -1,4 +1,4 @@
-# Indigo Stack 🔵🟣 Apple Platforms
+# 🪻 Indigo Stack CE — Apple Platforms
 
 ## Getting Started
 
