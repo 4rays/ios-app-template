@@ -558,7 +558,6 @@ settings: .settings(
 - Don't mix module responsibilities initially
 - Don't ignore build warnings
 - Don't forget to update Info.plist entries
-- Don't skip testing after each step
 
 ## Migration Commands Reference
 
