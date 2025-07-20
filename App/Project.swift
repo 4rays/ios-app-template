@@ -35,7 +35,7 @@ let project = Project(
       ],
       settings: .settings(
         base: [
-          "OTHER_LDFLAGS": .string("-ObjC"),
+          "OTHER_LDFLAGS": ["$(inherited)", "-ObjC"],
           "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": .string("mac.entitlements"),
           "CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]": .string("ios.entitlements"),
           "CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]": .string("ios.entitlements"),
