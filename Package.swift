@@ -10,7 +10,6 @@
     // productTypes: ["Alamofire": .framework,]
     productTypes: [:]
   )
-
 #endif
 
 let package = Package(
@@ -20,7 +19,9 @@ let package = Package(
     .package(url: "https://github.com/4rays/logging-client", from: "1.0.0"),
     .package(url: "https://github.com/apple/swift-algorithms", from: "1.2.0"),
     .package(url: "https://github.com/groue/GRDB.swift", from: "6.29.0"),
+    .package(url: "https://github.com/indigo-ce/composable-toasts", from: "1.0.1"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.17.0"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.9"),
+    .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.3.0"),
   ]
 )

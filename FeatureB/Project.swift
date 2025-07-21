@@ -2,6 +2,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.framework(
-  name: "Components",
-  reverseDomain: "net.4rays"
+  name: "FeatureB",
+  reverseDomain: "net.4rays",
+  tca: true,
 )

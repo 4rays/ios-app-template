@@ -1,5 +1,5 @@
 {
-  "originHash" : "3e58e604f0b9c207bc4aaa7020eb2bfb6f355999c6ab0c7166fe8feb457b559f",
+  "originHash" : "c6c4d28183a95debb822e3fe48feeb7110c072b3b85282ebc00dc0be408de556",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "5928286acce13def418ec36d05a001a9641086f2",
         "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "composable-toasts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/indigo-ce/composable-toasts",
+      "state" : {
+        "revision" : "448efb390d6f4178d19839885fa30f6e685861f8",
+        "version" : "1.0.1"
       }
     },
     {

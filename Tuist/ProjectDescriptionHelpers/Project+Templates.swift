@@ -1,8 +1,10 @@
 import ProjectDescription
 
 extension Project {
-  public static func featureFramework(
+  public static func framework(
     name: String,
+    reverseDomain: String,
+    tca: Bool = false,
     dependencies: [TargetDependency] = []
   ) -> Project {
     .init(
@@ -19,16 +21,18 @@ extension Project {
           name: name,
           destinations: [.iPad, .iPhone, .mac],
           product: .framework,
-          bundleId: "net.4rays.\(name)",
+          bundleId: "\(reverseDomain).\(name)",
           deploymentTargets: .multiplatform(iOS: "18.0", macOS: "15.0"),
           sources: ["Sources/**"],
-          dependencies: dependencies
+          dependencies: (tca
+            ? [.project(target: "IndigoCore", path: .relativeToRoot("IndigoCore"))] : [])
+            + dependencies
         ),
         .target(
           name: "\(name)Tests",
           destinations: [.iPad, .iPhone, .mac],
           product: .unitTests,
-          bundleId: "net.4rays.\(name)Tests",
+          bundleId: "\(reverseDomain).\(name)Tests",
           sources: ["Tests/**"]
         ),
       ]

@@ -46,18 +46,24 @@ mise up --bump
 
 ## Project Architecture
 
-This project is organized into three main modules:
+This project is organized into multiple modules:
 
-- **App**: The main iOS/macOS application targets that depend on both Core and Components
-- **Core**: Business logic, data models, and external dependencies (ComposableArchitecture, GRDB, etc.)
+- **App**: The main iOS/macOS application targets that depend on Core, Components, and feature modules
+- **Core**: Business logic, data models, and external dependencies
 - **Components**: Reusable SwiftUI components with no external dependencies for maximum portability
+- **IndigoCore**: Core TCA infrastructure and shared utilities for feature modules
+- **FeatureA** and **FeatureB**: Example TCA-based feature modules with their respective reducers and views
 
 ### Dependency Graph
 
 ```
 App
 ├── Core (business logic + external dependencies)
-└── Components (reusable UI components, no dependencies)
+├── Components (reusable UI components, no dependencies)
+├── FeatureA (TCA-based feature → IndigoCore)
+└── FeatureB (TCA-based feature → IndigoCore)
+
+IndigoCore (TCA shared utilities)
 ```
 
 This architecture ensures that:
@@ -65,6 +71,8 @@ This architecture ensures that:
 - UI components remain reusable across different projects
 - Business logic is separated from presentation
 - External dependencies are contained within the Core module
+- Feature modules follow consistent naming conventions (XFeature, XView)
+- TCA infrastructure is shared through IndigoCore
 
 ### Project Settings
 
@@ -98,19 +106,15 @@ The project contains the following targets:
 - **Dependencies**:
   - Core (business logic and data layer)
   - Components (reusable UI components)
+  - FeatureA (counter feature example)
+  - FeatureB (todo list feature example)
 
 #### Target: Core
 
 - **Type**: Framework
 - **Deployment Target**: iOS 18.0, macOS 15.0
 - **Purpose**: Contains business logic, data models, and external dependencies
-- **Dependencies**:
-  - ComposableArchitecture
-  - Dependencies
-  - GRDB
-  - JWTAuth
-  - LoggingClient
-  - Algorithms
+- **Dependencies**: None (simplified from previous dependencies)
 
 #### Target: Components
 
@@ -118,6 +122,29 @@ The project contains the following targets:
 - **Deployment Target**: iOS 18.0, macOS 15.0
 - **Purpose**: Reusable SwiftUI components with no external dependencies
 - **Dependencies**: None (intentionally kept dependency-free for maximum reusability)
+
+#### Target: IndigoCore
+
+- **Type**: Framework
+- **Deployment Target**: iOS 18.0, macOS 15.0
+- **Purpose**: Shared TCA infrastructure and utilities for feature modules
+- **Dependencies**: ComposableArchitecture, other TCA-related packages
+
+#### Target: FeatureA
+
+- **Type**: Framework
+- **Deployment Target**: iOS 18.0, macOS 15.0
+- **Purpose**: Example counter feature using TCA
+- **Dependencies**: IndigoCore
+- **Main Types**: FeatureAFeature (reducer), FeatureAView (SwiftUI view)
+
+#### Target: FeatureB
+
+- **Type**: Framework
+- **Deployment Target**: iOS 18.0, macOS 15.0
+- **Purpose**: Example todo list feature using TCA
+- **Dependencies**: IndigoCore
+- **Main Types**: FeatureBFeature (reducer), FeatureBView (SwiftUI view)
 
 ### Schemes
 
