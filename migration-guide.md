@@ -132,12 +132,12 @@ let workspace = Workspace(
   name: "YourAppName",
   projects: [
     "App",
-    "Core", 
+    "Core",
     "Components",
     "IndigoCore",
     // Add your feature modules here:
     // "UserProfile",
-    // "ShoppingCart", 
+    // "ShoppingCart",
     // "Settings",
   ],
   generationOptions: .options(
@@ -451,7 +451,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.framework(
-  name: "ShoppingCart", 
+  name: "ShoppingCart",
   reverseDomain: "com.yourcompany",
   tca: true,
 )
@@ -465,7 +465,7 @@ When creating TCA-based feature modules, follow these naming conventions:
 
 - Use `{ModuleName}Feature` pattern for reducers
 - Examples:
-  - `UserProfileFeature` for UserProfile module  
+  - `UserProfileFeature` for UserProfile module
   - `ShoppingCartFeature` for ShoppingCart module
   - `SettingsFeature` for Settings module
 
@@ -474,7 +474,7 @@ When creating TCA-based feature modules, follow these naming conventions:
 - Use `{ModuleName}View` pattern for main views
 - Examples:
   - `UserProfileView` for UserProfile module
-  - `ShoppingCartView` for ShoppingCart module  
+  - `ShoppingCartView` for ShoppingCart module
   - `SettingsView` for Settings module
 
 #### Example Feature Structure
@@ -490,57 +490,12 @@ public struct UserProfileFeature {
 
 public struct UserProfileView: View {
   @Bindable public var store: StoreOf<UserProfileFeature>
-  
+
   public var body: some View {
     // View implementation
   }
 }
 ```
-
-#### Reference Implementation
-
-The Indigo Stack includes FeatureA (counter) and FeatureB (todo list) as reference implementations demonstrating this naming pattern and TCA integration.
-
-### Step 6b: Planning Your Feature Modules
-
-Before creating feature modules, identify the distinct features in your application:
-
-#### Feature Identification Process
-
-1. **Analyze Your App's Functionality**:
-   - List all major user-facing features
-   - Group related functionality together
-   - Consider navigation boundaries and user flows
-
-2. **Common Feature Module Examples**:
-   - **Authentication**: Login, signup, password recovery
-   - **UserProfile**: Profile viewing/editing, settings, preferences
-   - **Content**: Main content viewing, searching, filtering
-   - **ShoppingCart**: Cart management, checkout flow
-   - **Settings**: App configuration, account settings
-   - **Notifications**: Push notification handling, in-app messaging
-
-3. **Feature Module Criteria**:
-   - **Self-contained**: Can function independently with minimal dependencies
-   - **Cohesive**: All functionality serves a single, well-defined purpose  
-   - **Reusable**: Could potentially be used in other apps
-   - **Testable**: Can be tested in isolation
-
-#### Example: E-commerce App Feature Breakdown
-
-```
-YourEcommerceApp/
-├── Authentication/     (Login, signup, password reset)
-├── ProductCatalog/     (Browse, search, filter products)
-├── ProductDetail/      (Product info, reviews, add to cart)
-├── ShoppingCart/       (Cart management, quantity updates)
-├── Checkout/          (Payment, shipping, order confirmation)
-├── OrderHistory/      (Past orders, tracking, returns)
-├── UserProfile/       (Profile, addresses, payment methods)
-└── Settings/          (App preferences, notifications)
-```
-
-Replace these examples with modules that match your specific application requirements.
 
 ### Step 7: Code Migration Strategy
 
