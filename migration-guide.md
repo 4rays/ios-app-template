@@ -13,33 +13,33 @@ This guide provides step-by-step instructions for migrating existing SwiftUI pro
 
 The Indigo Stack follows a clean three-layer architecture:
 
-```
+```md
 ProjectRoot/
-├── App/                    # Main application target
-│   ├── Project.swift       # App target configuration
-│   ├── Sources/           # App-specific code
-│   ├── Resources/         # App assets and resources
-│   ├── Tests/             # App tests
-│   ├── ios.entitlements   # iOS entitlements
-│   └── mac.entitlements   # macOS entitlements
-├── Core/                  # Business logic & external dependencies
-│   ├── Project.swift      # Core framework configuration
-│   ├── Sources/          # Core business logic
-│   └── Tests/            # Core tests
-├── Components/            # Reusable UI components
-│   ├── Project.swift      # Components framework configuration
-│   ├── Sources/          # SwiftUI components
-│   └── Tests/            # Component tests
-├── Configs/              # Build configurations
-│   ├── Debug.xcconfig    # Debug settings
-│   └── Release.xcconfig  # Release settings
-├── Tuist/               # Tuist helpers
-│   └── ProjectDescriptionHelpers/
-│       └── Project+Templates.swift
-├── Tuist.swift          # Tuist configuration
-├── Workspace.swift      # Workspace definition
-├── Package.swift        # Dependencies
-└── mise.toml           # Tuist version management
+├── App/ # Main application target
+│ ├── Project.swift # App target configuration
+│ ├── Sources/ # App-specific code
+│ ├── Resources/ # App assets and resources
+│ ├── Tests/ # App tests
+│ ├── ios.entitlements # iOS entitlements
+│ └── mac.entitlements # macOS entitlements
+├── Core/ # Business logic & external dependencies
+│ ├── Project.swift # Core framework configuration
+│ ├── Sources/ # Core business logic
+│ └── Tests/ # Core tests
+├── Components/ # Reusable UI components
+│ ├── Project.swift # Components framework configuration
+│ ├── Sources/ # SwiftUI components
+│ └── Tests/ # Component tests
+├── Configs/ # Build configurations
+│ ├── Debug.xcconfig # Debug settings
+│ └── Release.xcconfig # Release settings
+├── Tuist/ # Tuist helpers
+│ └── ProjectDescriptionHelpers/
+│ └── Project+Templates.swift
+├── Tuist.swift # Tuist configuration
+├── Workspace.swift # Workspace definition
+├── Package.swift # Dependencies
+└── mise.toml # Tuist version management
 ```
 
 ## Migration Steps
@@ -151,7 +151,7 @@ let workspace = Workspace(
 
 #### A. Create `Configs/Debug.xcconfig`
 
-```
+```config
 ALWAYS_SEARCH_USER_PATHS=NO
 CLANG_ANALYZER_NONNULL=YES
 CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION=YES_AGGRESSIVE
@@ -210,7 +210,7 @@ DISPLAY_NAME="YourApp Dev"
 
 #### B. Create `Configs/Release.xcconfig`
 
-```
+```config
 ALWAYS_SEARCH_USER_PATHS=NO
 CLANG_ANALYZER_NONNULL=YES
 CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION=YES_AGGRESSIVE
