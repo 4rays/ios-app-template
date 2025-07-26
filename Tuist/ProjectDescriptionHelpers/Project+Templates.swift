@@ -3,7 +3,7 @@ import ProjectDescription
 extension Project {
   public static func framework(
     name: String,
-    reverseDomain: String,
+    reverseDomain: String = teamReverseDomain,
     tca: Bool = false,
     dependencies: [TargetDependency] = []
   ) -> Project {
@@ -25,7 +25,7 @@ extension Project {
           deploymentTargets: .platforms,
           sources: ["Sources/**"],
           dependencies: (tca
-            ? [.project(target: "IndigoCore", path: .relativeToRoot("IndigoCore"))] : [])
+            ? [.project(target: "Indigo", path: .relativeToRoot("Indigo"))] : [])
             + dependencies
         ),
         .target(

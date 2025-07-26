@@ -6,7 +6,7 @@ let workspace = Workspace(
     "App",
     "Core",
     "Components",
-    "IndigoCore",
+    "Indigo",
     "FeatureA",
     "FeatureB",
   ],

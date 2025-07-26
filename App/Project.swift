@@ -15,10 +15,10 @@ let project = Project(
   ),
   targets: [
     .target(
-      name: "Indigo",
+      name: appName.targetName,
       destinations: .destinations,
       product: .app,
-      bundleId: "net.4rays.Indigo",
+      bundleId: "\(teamReverseDomain).\(appName.targetName)",
       deploymentTargets: .platforms,
       infoPlist: .extendingDefault(
         with: [
@@ -49,32 +49,32 @@ let project = Project(
   ],
   schemes: [
     .scheme(
-      name: "Indigo Debug",
+      name: "\(appName) Debug",
       shared: true,
-      buildAction: .buildAction(targets: ["Indigo"]),
+      buildAction: .buildAction(targets: [appName]),
       runAction: .runAction(
         configuration: "Debug",
-        executable: "Indigo"
+        executable: appName
       ),
       archiveAction: .archiveAction(configuration: "Debug"),
       profileAction: .profileAction(
         configuration: "Debug",
-        executable: "Indigo"
+        executable: appName
       ),
       analyzeAction: .analyzeAction(configuration: "Debug")
     ),
     .scheme(
-      name: "Indigo Release",
+      name: "\(appName) Release",
       shared: true,
-      buildAction: .buildAction(targets: ["Indigo"]),
+      buildAction: .buildAction(targets: [appName]),
       runAction: .runAction(
         configuration: "Release",
-        executable: "Indigo"
+        executable: appName
       ),
       archiveAction: .archiveAction(configuration: "Release"),
       profileAction: .profileAction(
         configuration: "Release",
-        executable: "Indigo"
+        executable: appName
       ),
       analyzeAction: .analyzeAction(configuration: "Release")
     ),

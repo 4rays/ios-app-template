@@ -7,7 +7,14 @@ the project structure, dependencies, and build settings for Apple platform appli
 
 ### Setup
 
-1- Install Tuist by running:
+1- **Configure project settings**: Update the values in `Tuist/ProjectDescriptionHelpers/Config.swift` to match your project:
+
+```swift
+public let teamReverseDomain = "com.yourcompany"  // Replace with your domain
+public let appName: TargetReference = "YourApp"   // Replace with your app name
+```
+
+2- Install Tuist by running:
 
 ```sh
 curl https://mise.jdx.dev/install.sh | sh
@@ -17,7 +24,7 @@ mise install
 This will install the Mise tool which manages Tuist versions, and then install
 the specific Tuist version for this project based on the `.mise.toml` file.
 
-2- Install project dependencies by running:
+3- Install project dependencies by running:
 
 ```sh
 tuist install
@@ -26,7 +33,7 @@ tuist install
 This will fetch and install all Swift Package Manager dependencies defined in
 the project's `Package.swift`.
 
-3- Generate the Xcode project by running:
+4- Generate the Xcode project by running:
 
 ```sh
 tuist generate
@@ -51,7 +58,7 @@ This project is organized into multiple modules:
 - **App**: The main iOS/macOS application targets that depend on Core, Components, and feature modules
 - **Core**: Business logic, data models, and external dependencies
 - **Components**: Reusable SwiftUI components with no external dependencies for maximum portability
-- **IndigoCore**: Core TCA infrastructure and shared utilities for feature modules
+- **Indigo**: Core TCA infrastructure and shared utilities for feature modules
 - **FeatureA** and **FeatureB**: Example TCA-based feature modules with their respective reducers and views
 
 ### Dependency Graph
@@ -60,10 +67,10 @@ This project is organized into multiple modules:
 App
 ├── Core (business logic + external dependencies)
 ├── Components (reusable UI components, no dependencies)
-├── FeatureA (TCA-based feature → IndigoCore)
-└── FeatureB (TCA-based feature → IndigoCore)
+├── FeatureA (TCA-based feature → Indigo)
+└── FeatureB (TCA-based feature → Indigo)
 
-IndigoCore (TCA shared utilities)
+Indigo (TCA shared utilities)
 ```
 
 This architecture ensures that:
@@ -72,7 +79,7 @@ This architecture ensures that:
 - Business logic is separated from presentation
 - External dependencies are contained within the Core module
 - Feature modules follow consistent naming conventions (XFeature, XView)
-- TCA infrastructure is shared through IndigoCore
+- TCA infrastructure is shared through Indigo
 
 ### Project Settings
 
@@ -123,7 +130,7 @@ The project contains the following targets:
 - **Purpose**: Reusable SwiftUI components with no external dependencies
 - **Dependencies**: None (intentionally kept dependency-free for maximum reusability)
 
-#### Target: IndigoCore
+#### Target: Indigo
 
 - **Type**: Framework
 - **Deployment Target**: iOS 18.0, macOS 15.0
@@ -135,7 +142,7 @@ The project contains the following targets:
 - **Type**: Framework
 - **Deployment Target**: iOS 18.0, macOS 15.0
 - **Purpose**: Example counter feature using TCA
-- **Dependencies**: IndigoCore
+- **Dependencies**: Indigo
 - **Main Types**: FeatureAFeature (reducer), FeatureAView (SwiftUI view)
 
 #### Target: FeatureB
@@ -143,7 +150,7 @@ The project contains the following targets:
 - **Type**: Framework
 - **Deployment Target**: iOS 18.0, macOS 15.0
 - **Purpose**: Example todo list feature using TCA
-- **Dependencies**: IndigoCore
+- **Dependencies**: Indigo
 - **Main Types**: FeatureBFeature (reducer), FeatureBView (SwiftUI view)
 
 ### Schemes

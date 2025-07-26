@@ -2,8 +2,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.framework(
-  name: "IndigoCore",
-  reverseDomain: "net.4rays",
+  name: "Indigo",
   dependencies: [
     .external(name: "Algorithms"),
     .external(name: "ComposableArchitecture"),

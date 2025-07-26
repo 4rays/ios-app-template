@@ -44,7 +44,20 @@ ProjectRoot/
 
 ## Migration Steps
 
-### Step 1: Install Tuist and Setup Tools
+### Step 1: Configure Project Settings
+
+**Important**: Before proceeding with the migration, you must update the project configuration values in `Tuist/ProjectDescriptionHelpers/Config.swift`:
+
+```swift
+import ProjectDescription
+
+public let teamReverseDomain = "com.yourcompany"  // Replace with your reverse domain
+public let appName: TargetReference = "YourApp"   // Replace with your app name
+```
+
+These values will be used throughout the project configuration to set bundle identifiers, target names, and other project-specific settings.
+
+### Step 2: Install Tuist and Setup Tools
 
 ```bash
 # Install Mise (Tuist version manager)
@@ -58,7 +71,7 @@ tuist = "4.54.3"' > mise.toml
 mise install
 ```
 
-### Step 2: Extract Dependencies from Existing Project
+### Step 3: Extract Dependencies from Existing Project
 
 From your existing Xcode project, extract the following information:
 
@@ -89,7 +102,7 @@ Look for these settings in your existing project:
 - Note any custom Info.plist entries
 - Collect entitlements files
 
-### Step 3: Create Core Tuist Configuration Files
+### Step 4: Create Core Tuist Configuration Files
 
 #### A. Create `Tuist.swift`
 
@@ -134,7 +147,7 @@ let workspace = Workspace(
     "App",
     "Core",
     "Components",
-    "IndigoCore",
+    "Indigo",
     // Add your feature modules here:
     // "UserProfile",
     // "ShoppingCart",
@@ -147,7 +160,7 @@ let workspace = Workspace(
 )
 ```
 
-### Step 4: Create Build Configuration Files
+### Step 5: Create Build Configuration Files
 
 #### A. Create `Configs/Debug.xcconfig`
 
@@ -263,7 +276,7 @@ MTL_ENABLE_DEBUG_INFO=NO
 DISPLAY_NAME="YourApp"
 ```
 
-### Step 5: Create Tuist Helper Templates
+### Step 6: Create Tuist Helper Templates
 
 #### Create `Tuist/ProjectDescriptionHelpers/Project+Templates.swift`
 
@@ -295,7 +308,7 @@ extension Project {
           deploymentTargets: .multiplatform(iOS: "18.0", macOS: "15.0"),
           sources: ["Sources/**"],
           dependencies: (tca
-            ? [.project(target: "IndigoCore", path: .relativeToRoot("IndigoCore"))] : [])
+            ? [.project(target: "Indigo", path: .relativeToRoot("Indigo"))] : [])
             + dependencies
         ),
         .target(
@@ -311,7 +324,7 @@ extension Project {
 }
 ```
 
-### Step 6: Create Module Projects
+### Step 7: Create Module Projects
 
 #### A. Create `App/Project.swift`
 
@@ -457,7 +470,7 @@ let project = Project.framework(
 )
 ```
 
-### Step 6a: Feature Module Naming Conventions
+### Step 7a: Feature Module Naming Conventions
 
 When creating TCA-based feature modules, follow these naming conventions:
 
@@ -497,7 +510,7 @@ public struct UserProfileView: View {
 }
 ```
 
-### Step 7: Code Migration Strategy
+### Step 8: Code Migration Strategy
 
 #### A. Initial Code Placement
 
@@ -520,7 +533,7 @@ For simplicity, initially place ALL existing code in the `App/Sources/` director
 2. Update test target references
 3. Fix any import issues
 
-### Step 8: Generate and Verify
+### Step 9: Generate and Verify
 
 ```bash
 # Install dependencies
@@ -533,7 +546,7 @@ tuist generate
 open App.xcworkspace
 ```
 
-### Step 9: Gradual Refactoring (Post-Migration)
+### Step 10: Gradual Refactoring (Post-Migration)
 
 Once the project builds successfully, gradually refactor:
 
@@ -556,7 +569,7 @@ Once the project builds successfully, gradually refactor:
 - Add dependencies to appropriate modules
 - Update imports throughout codebase
 
-### Step 10: Common Issues and Solutions
+### Step 11: Common Issues and Solutions
 
 #### A. Import Issues
 
@@ -579,7 +592,7 @@ Once the project builds successfully, gradually refactor:
 - **Problem**: Entitlements not applied
 - **Solution**: Ensure entitlements files are in correct location and referenced in Project.swift
 
-### Step 11: Verification Checklist
+### Step 12: Verification Checklist
 
 - [ ] Project builds successfully
 - [ ] All resources are accessible
@@ -589,7 +602,7 @@ Once the project builds successfully, gradually refactor:
 - [ ] Code signing works for distribution
 - [ ] All schemes build correctly
 
-### Step 12: Advanced Configuration
+### Step 13: Advanced Configuration
 
 #### A. Custom Build Phases
 
