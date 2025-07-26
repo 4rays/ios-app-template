@@ -19,10 +19,10 @@ extension Project {
       targets: [
         .target(
           name: name,
-          destinations: [.iPad, .iPhone, .mac],
+          destinations: .destinations,
           product: .framework,
           bundleId: "\(reverseDomain).\(name)",
-          deploymentTargets: .multiplatform(iOS: "18.0", macOS: "15.0"),
+          deploymentTargets: .platforms,
           sources: ["Sources/**"],
           dependencies: (tca
             ? [.project(target: "IndigoCore", path: .relativeToRoot("IndigoCore"))] : [])
@@ -30,12 +30,30 @@ extension Project {
         ),
         .target(
           name: "\(name)Tests",
-          destinations: [.iPad, .iPhone, .mac],
+          destinations: .destinations,
           product: .unitTests,
           bundleId: "\(reverseDomain).\(name)Tests",
           sources: ["Tests/**"]
         ),
       ]
     )
+  }
+}
+
+extension ProjectDescription.DeploymentTargets {
+  public static var platforms: DeploymentTargets {
+    .multiplatform(
+      iOS: "18.0",
+      macOS: "15.0",
+      watchOS: nil,
+      tvOS: nil,
+      visionOS: nil
+    )
+  }
+}
+
+extension ProjectDescription.Destinations {
+  public static var destinations: Destinations {
+    [.iPad, .iPhone, .mac]
   }
 }

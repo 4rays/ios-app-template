@@ -1,4 +1,5 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
 
 let project = Project(
   name: "App",
@@ -15,10 +16,10 @@ let project = Project(
   targets: [
     .target(
       name: "Indigo",
-      destinations: [.iPad, .iPhone, .mac],
+      destinations: .destinations,
       product: .app,
       bundleId: "net.4rays.Indigo",
-      deploymentTargets: .multiplatform(iOS: "18.0", macOS: "15.0"),
+      deploymentTargets: .platforms,
       infoPlist: .extendingDefault(
         with: [
           "UILaunchScreen": [
