@@ -16,8 +16,8 @@ public struct FeatureB {
 
   public enum Action {
     case addTodoButtonTapped
-    case deleteTodo(id: UUID)
-    case toggleTodo(id: UUID)
+    case deleteTodo(id: Int)
+    case toggleTodo(id: Int)
     case newTodoTextChanged(String)
   }
 
@@ -52,12 +52,13 @@ public struct FeatureB {
 }
 
 public struct Todo: Equatable, Identifiable {
-  public let id = UUID()
+  public let id: Int
   public var text: String
   public var isCompleted = false
 
-  public init(text: String) {
+  public init(id: Int = 0, text: String) {
     self.text = text
+    self.id = id
   }
 }
 

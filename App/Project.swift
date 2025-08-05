@@ -45,13 +45,24 @@ let project = Project(
           "INFOPLIST_KEY_CFBundleDisplayName": "$(DISPLAY_NAME)",
         ]
       )
-    )
+    ),
+    .target(
+      name: "\(appName.targetName)Tests",
+      destinations: .destinations,
+      product: .unitTests,
+      bundleId: "\(teamReverseDomain).\(appName.targetName)Tests",
+      sources: ["Tests/**"],
+      dependencies: [
+        .target(name: appName.targetName)
+      ]
+    ),
   ],
   schemes: [
     .scheme(
-      name: "\(appName) Debug",
+      name: "\(appName.targetName)",
       shared: true,
       buildAction: .buildAction(targets: [appName]),
+      testAction: .testPlans([.relativeToManifest("All.xctestplan")]),
       runAction: .runAction(
         configuration: "Debug",
         executable: appName
@@ -64,7 +75,7 @@ let project = Project(
       analyzeAction: .analyzeAction(configuration: "Debug")
     ),
     .scheme(
-      name: "\(appName) Release",
+      name: "\(appName.targetName) Release",
       shared: true,
       buildAction: .buildAction(targets: [appName]),
       runAction: .runAction(

@@ -33,7 +33,10 @@ extension Project {
           destinations: .destinations,
           product: .unitTests,
           bundleId: "\(reverseDomain).\(name)Tests",
-          sources: ["Tests/**"]
+          sources: ["Tests/**"],
+          dependencies: [
+            .target(name: name)
+          ]
         ),
       ]
     )

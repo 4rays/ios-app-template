@@ -1,7 +1,7 @@
 import ComposableArchitecture
 import Testing
 
-@testable import Feature
+@testable import FeatureB
 
 @MainActor
 struct FeatureBTests {

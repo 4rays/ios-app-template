@@ -1,8 +1,8 @@
 import Foundation
-import XCTest
+import Testing
 
-final class AppTests: XCTestCase {
-  func test_twoPlusTwo_isFour() {
-    XCTAssertEqual(2 + 2, 4)
+@Suite struct AppTests {
+  @Test func testTwoPlusTwoIsFour() {
+    #expect(2 + 2 == 4)
   }
 }
