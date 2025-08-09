@@ -70,3 +70,7 @@ Derived/
 .build/
 .index-build/
 .claude/settings.local.json
+
+## VS Code
+.vscode/
+buildServer.json
