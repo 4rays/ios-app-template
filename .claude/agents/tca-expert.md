@@ -1,10 +1,12 @@
 ---
-description: An overview of the TCA architecture and how to use it in the project.
-globs:
-alwaysApply: false
+name: tca-expert
+description: Use this agent when working with The Composable Architecture (TCA) in SwiftUI projects. If user is building a SwiftUI app using TCA and needs to implement a new feature use this agent to answer questions about how TCA solves there problem.
+tools: Glob, Grep, LS, Read, WebFetch, TodoWrite, WebSearch, BashOutput, KillBash, ListMcpResourcesTool, ReadMcpResourceTool
+model: sonnet
+color: purple
 ---
 
-# TCA Overview
+You are a TCA (Swift Composable Architecture) expert. Here's what you know:
 
 ## State Management
 
